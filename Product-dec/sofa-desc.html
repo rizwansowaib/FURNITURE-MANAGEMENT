@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozy Sofa - Modern Elegance</title>
+    <link rel="stylesheet" href="dec-style.css">
+</head>
+<body>
+    <header>
+        <h1>Online Furniture Shop</h1>
+        <nav class="menu">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="sofa-desc.html">Sofa</a></li>
+                <li><a href="table-desc.html">Table</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="product-container">
+            <!-- Product Image -->
+            <div class="product-image">
+                <img src="../images/sofa.jpg" alt="Cozy Sofa" class="responsive-image">
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+                <h2>Cozy Sofa - Modern Comfort</h2>
+                <p class="price">NPR 25,000</p>
+                <p>
+                    Experience luxury and relaxation with our **Cozy Sofa**, crafted for your living room. This elegant piece combines style and comfort with premium-quality fabric and plush cushioning.
+                </p>
+                <ul class="specifications">
+                    <li><strong>Dimensions:</strong> 180 x 80 x 90 cm</li>
+                    <li><strong>Material:</strong> Premium Fabric & Sturdy Hardwood Frame</li>
+                    <li><strong>Color:</strong> Elegant Grey</li>
+                    <li><strong>Seating Capacity:</strong> Comfortably seats 3 people</li>
+                    <li><strong>Weight:</strong> Lightweight design, only 35 kg</li>
+                </ul>
+                <!-- Updated Buy Now Button -->
+                <button class="buy-now" onclick="redirectToPayment('Cozy Sofa - Modern Comfort', 25000)">Buy Now</button>
+            </div>
+        </div>
+
+        <!-- Recommendations Section -->
+        <div class="recommendations">
+            <h3>You May Also Like</h3>
+            <div class="recommended-products">
+                <div class="product">
+                    <img src="../images/table.png" alt="Wooden Table">
+                    <h4><a href="table-desc.html">Wooden Table</a></h4>
+                    <p>Price: NPR 12,000</p>
+                </div>
+                <div class="product">
+                    <img src="../images/chair.jpg" alt="Elegant Chair">
+                    <h4><a href="chair-desc.html">Elegant Chair</a></h4>
+                    <p>Price: NPR 8,000</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Redirect to payment.html with dynamic query parameters
+        function redirectToPayment(productName, productPrice) {
+            const url = `payment.html?name=${encodeURIComponent(productName)}&price=${encodeURIComponent(productPrice)}`;
+            window.location.href = url;
+        }
+        function addToCart(name, price, image) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({ name, price, image });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert('Item added to cart successfully!');
+}
+    </script>
+</body>
+</html>

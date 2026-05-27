@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products - Furniture Hub</title>
+    <link rel="stylesheet" href="product_style.css">
+    <script defer src="../js/product.js"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="../images/logo1.png" alt="Furniture Hub Logo">
+            <div class="furniture-title">Furniture Hub</div>
+        </div>
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Search for products..." onkeyup="searchProducts()">
+            <button class="search-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10" cy="10" r="7" stroke="#333" stroke-width="2"/>
+                    <line x1="15" y1="15" x2="22" y2="22" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+        <ul class="navbar-menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../Cart/cart.php">Cart</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../Login/login.html">Login</a></li>
+            <li><a href="../Login/signup.html">Sign Up!</a></li>
+        </ul>
+    </nav>
+
+    <div class="category-dropdown">
+        <label for="category-select">Filter by Category:</label>
+        <select id="category-select" onchange="filterProducts()">
+            <option value="all">All Products</option>
+            <option value="chair">Chairs</option>
+            <option value="sofa">Sofas</option>
+            <option value="table">Tables</option>
+            <option value="bed">Beds</option>
+            <option value="bookshelf">Bookshelves</option>
+            <option value="dining">Dining Tables</option>
+            <option value="wardrobe">Wardrobes</option>
+            <option value="cupboard">Cupboards</option>
+        </select>
+    </div>
+
+    <section class="product-section">
+        <h2>All Products</h2>
+        <div class="product-grid" id="product-list">
+
+            <div class="product-card" data-category="chair">
+                <img class="product-image" src="../images/chair.jpg" alt="Chair">
+                <h3>Stylish Chair</h3>
+                <p class="price">NPR 8000</p>
+                <button class="btn buy-now">Buy Now</button>
+                <button class="btn add-cart" onclick="addToCart(1)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="sofa">
+                <img class="product-image" src="../images/sofa.jpg" alt="Sofa">
+                <h3>Luxury Sofa</h3>
+                <p class="price">NPR 45000</p>
+                <button class="btn buy-now">Buy Now</button>
+                <button class="btn add-cart" onclick="addToCart(2)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="table">
+                <img class="product-image" src="../images/table.png" alt="Table">
+                <h3>Elegant Table</h3>
+                <p class="price">NPR 12000</p>
+                <button class="btn buy-now">Buy Now</button>
+                <button class="btn add-cart" onclick="addToCart(3)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="bookshelf">
+                <img class="product-image" src="../images/bookshelf.webp" alt="Bookshelf">
+                <h3>Modern Bookshelf</h3>
+                <p class="price">$200</p>
+                <button class="btn buy-now">Buy Now</button>
+                <button class="btn add-cart" onclick="addToCart(4)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="shoerack">
+                <img class="product-image" src="../images/shoe_rack.webp" alt="Shoe Rack">
+                <h3>Stylish Shoe Rack</h3>
+                <p class="price">$150</p>
+                <button class="btn buy-now">Buy Now</button>
+                <button class="btn add-cart" onclick="addToCart(5)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="cupboard">
+                <img class="product-image" src="../images/cupboard.webp" alt="Cupboard">
+                <h3>Elegant Cupboard</h3>
+                <p class="price">$350</p>
+                <button class="btn buy-now">Buy Now</button>
+                <button class="btn add-cart" onclick="addToCart(6)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="wardrobe">
+                <img class="product-image" src="../images/Wardrobe.webp" alt="Wardrobe">
+                <h3>Modern Wardrobe</h3>
+                <p class="price">$350</p>
+                <button class="btn buy-now">Buy Now</button>
+                <button class="btn add-cart" onclick="addToCart(7)">Add to Cart</button>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        function filterProducts() {
+            let category = document.getElementById("category-select").value;
+            let products = document.querySelectorAll(".product-card");
+            products.forEach(product => {
+                product.style.display = (category === "all" || product.dataset.category === category) ? "block" : "none";
+            });
+        }
+
+        function searchProducts() {
+            let searchValue = document.getElementById("search-bar").value.toLowerCase();
+            let products = document.querySelectorAll(".product-card");
+            products.forEach(product => {
+                let productName = product.querySelector("h3").innerText.toLowerCase();
+                product.style.display = productName.includes(searchValue) ? "block" : "none";
+            });
+        }
+
+        function addToCart(productId) {
+            fetch('../php/cart_action.php', {
+                method: 'POST',
+                body: JSON.stringify({ product_id: productId }),
+                headers: { 'Content-Type': 'application/json' }
+            }).then(response => response.text()).then(data => {
+                alert(data);
+            });
+        }
+    </script>
+</body>
+</html>

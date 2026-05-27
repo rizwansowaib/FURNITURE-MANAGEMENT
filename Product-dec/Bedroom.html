@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Bed - Supreme Comfort</title>
+    <link rel="stylesheet" href="dec-style.css">
+</head>
+<body>
+    <header>
+        <h1>Online Furniture Shop</h1>
+        <nav class="menu">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="chair-desc.html">Chair</a></li>
+                <li><a href="table-desc.html">Table</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="product-container">
+            <!-- Product Image -->
+            <div class="product-image">
+                <img src="../images/bed.jpg" alt="Luxury Bed" class="responsive-image">
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+                <h2>Luxury Bed - Supreme Comfort</h2>
+                <p class="price">NPR 50,000</p>
+                <p>
+                    Experience ultimate relaxation with our **Luxury Bed**, crafted with high-quality wood and premium cushioning for superior comfort and elegance.
+                </p>
+                <ul class="specifications">
+                    <li><strong>Dimensions:</strong> 200 x 180 x 120 cm</li>
+                    <li><strong>Material:</strong> Solid Wood & Memory Foam</li>
+                    <li><strong>Color:</strong> Elegant Walnut</li>
+                    <li><strong>Weight:</strong> Durable yet easy to assemble</li>
+                </ul>
+                <!-- Buy Now & Add to Cart Buttons -->
+                <button class="buy-now" onclick="redirectToPayment('Luxury Bed', 50000)">Buy Now</button>
+                <button class="add-to-cart" onclick="addToCart('Luxury Bed', 50000, '../images/bed.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Recommendations Section -->
+        <div class="recommendations">
+            <h3>You May Also Like</h3>
+            <div class="recommended-products">
+                <div class="product">
+                    <img src="../images/sofa.png" alt="Cozy Sofa">
+                    <h4><a href="sofa-desc.html">Cozy Sofa</a></h4>
+                    <p>Price: NPR 25,000</p>
+                </div>
+                <div class="product">
+                    <img src="../images/chair.jpg" alt="Elegant Chair">
+                    <h4><a href="chair-desc.html">Elegant Chair</a></h4>
+                    <p>Price: NPR 8,000</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Redirect to payment page with dynamic query parameters
+        function redirectToPayment(productName, productPrice) {
+            const url = `payment.html?name=${encodeURIComponent(productName)}&price=${encodeURIComponent(productPrice)}`;
+            window.location.href = url;
+        }
+
+        // Function to add item to cart
+        function addToCart(name, price, image) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name, price, image });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Item added to cart successfully!');
+        }
+    </script>
+</body>
+</html>

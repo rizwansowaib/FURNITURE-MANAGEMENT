@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Verification</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Account Verification</h2>
+        <form action="verify.php" method="POST">
+            <label for="email">Enter your email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="code">Enter Verification Code:</label>
+            <input type="text" id="code" name="code" required>
+
+            <button type="submit">Verify</button>
+        </form>
+    </div>
+</body>
+</html>
+sss

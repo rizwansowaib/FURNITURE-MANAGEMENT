@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Furniture Shop</title>
+    <link rel="stylesheet" href="lstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Furniture<span>Shop</span></div>
+        <nav>
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../login.html" class="nav-link">Login</a>
+        </nav>
+    </header>
+
+    <!-- Register Section -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <h2 class="auth-header">Create Your Account</h2>
+            <p class="subtitle">Join us and explore premium furniture designs crafted just for you.</p>
+            <form action="register.php" method="POST" class="auth-form">
+                <!-- Username -->
+                <div class="form-group">
+                    <label for="username">Full Name</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your full name" required>
+                </div>
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <!-- Phone Number -->
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn">Register</button>
+            </form>
+
+            <p class="switch-auth">Already have an account? <a href="../login.html">Login here</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Furniture Shop. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

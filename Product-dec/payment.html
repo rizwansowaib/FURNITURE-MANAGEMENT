@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .payment-button {
+            display: inline-block;
+            width: 100%;
+            max-width: 300px;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 16px;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .payment-button:disabled {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+
+        .payment-form {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .error {
+            color: red;
+            display: none;
+        }
+
+        .success {
+            color: green;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Online Furniture Shop</h1>
+    </header>
+
+    <main>
+        <h2>Payment Page</h2>
+
+        <!-- Order Summary -->
+        <section class="order-summary">
+            <h3>Order Summary</h3>
+            <p><strong>Product:</strong> <span id="product-name"></span></p>
+            <p><strong>Price:</strong> NPR <span id="product-price"></span></p>
+        </section>
+
+        <!-- Password Verification -->
+        <section class="password-section">
+            <h3>Enter Password to Proceed</h3>
+            <input type="password" id="password" placeholder="Enter your password">
+            <p class="error" id="error-msg">Incorrect Password!</p>
+            <p class="success" id="success-msg">Password Verified! You can proceed.</p>
+            <button id="verify-btn" class="payment-button">Verify Password</button>
+        </section>
+
+        <!-- Payment Options -->
+        <section class="payment-options">
+            <h3>Select Payment Method</h3>
+            <button id="esewa-option" class="payment-button" disabled>Pay with eSewa</button>
+        </section>
+
+        <!-- eSewa Payment Form -->
+        <section id="esewa-form" class="payment-form">
+            <h3>eSewa Payment</h3>
+            <p>Click the button below to proceed to eSewa.</p>
+            <form id="esewa-payment-form" action="../Payment/payment_success.php" method="GET">
+                <input type="hidden" name="amount" id="esewa-amount">
+                <input type="hidden" name="total_amount" id="esewa-total-amount">
+                <input type="hidden" name="transaction_uuid" id="esewa-transaction-uuid">
+                <button type="submit" class="payment-button">Proceed to eSewa</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            const productName = params.get('name') || 'Unknown Product';
+            const productPrice = params.get('price') || '0';
+            const transactionUUID = Date.now();
+
+            document.getElementById('product-name').textContent = productName;
+            document.getElementById('product-price').textContent = productPrice;
+            document.getElementById('esewa-amount').value = productPrice;
+            document.getElementById('esewa-total-amount').value = productPrice;
+            document.getElementById('esewa-transaction-uuid').value = transactionUUID;
+
+            document.getElementById("esewa-option").addEventListener("click", () => {
+                document.getElementById("esewa-form").style.display = "block";
+            });
+
+            document.getElementById("verify-btn").addEventListener("click", function() {
+                const password = document.getElementById("password").value;
+
+                if (password.trim() === "") {
+                    document.getElementById("error-msg").textContent = "Password cannot be empty!";
+                    document.getElementById("error-msg").style.display = "block";
+                    return;
+                }
+
+                fetch("../payment/verify_password.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: `password=${encodeURIComponent(password)}`
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        document.getElementById("esewa-option").disabled = false;
+                        document.getElementById("success-msg").style.display = "block";
+                        document.getElementById("error-msg").style.display = "none";
+                    } else {
+                        document.getElementById("error-msg").textContent = "Incorrect Password!";
+                        document.getElementById("error-msg").style.display = "block";
+                        document.getElementById("success-msg").style.display = "none";
+                    }
+                })
+                .catch(error => {
+                    document.getElementById("error-msg").textContent = "Error connecting to the server!";
+                    document.getElementById("error-msg").style.display = "block";
+                    console.error("Error:", error);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

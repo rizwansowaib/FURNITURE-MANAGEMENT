@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Bookshelf - Elegant Storage</title>
+    <link rel="stylesheet" href="dec-style.css">
+</head>
+<body>
+    <header>
+        <h1>Online Furniture Shop</h1>
+        <nav class="menu">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="chair-desc.html">Chair</a></li>
+                <li><a href="table-desc.html">Table</a></li>
+                <li><a href="bed-desc.html">Bed</a></li>
+                <li><a href="wardrobe-desc.html">Wardrobe</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="product-container">
+            <!-- Product Image -->
+            <div class="product-image">
+                <img src="../images/bookshelf.jpg" alt="Premium Bookshelf" class="responsive-image">
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+                <h2>Premium Bookshelf - Elegant Storage</h2>
+                <p class="price">NPR 20,000</p>
+                <p>
+                    Showcase your book collection with our **Premium Bookshelf**, featuring a sleek and sturdy design crafted from high-quality wood.
+                </p>
+                <ul class="specifications">
+                    <li><strong>Dimensions:</strong> 150 x 80 x 35 cm</li>
+                    <li><strong>Material:</strong> Solid Wood</li>
+                    <li><strong>Color:</strong> Dark Mahogany</li>
+                    <li><strong>Features:</strong> Five spacious shelves for organized storage</li>
+                </ul>
+                <!-- Buy Now & Add to Cart Buttons -->
+                <button class="buy-now" onclick="redirectToPayment('Premium Bookshelf', 20000)">Buy Now</button>
+                <button class="add-to-cart" onclick="addToCart('Premium Bookshelf', 20000, '../images/bookshelf.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Recommendations Section -->
+        <div class="recommendations">
+            <h3>You May Also Like</h3>
+            <div class="recommended-products">
+                <div class="product">
+                    <img src="../images/wardrobe.jpg" alt="Modern Wardrobe">
+                    <h4><a href="wardrobe-desc.html">Modern Wardrobe</a></h4>
+                    <p>Price: NPR 40,000</p>
+                </div>
+                <div class="product">
+                    <img src="../images/table.png" alt="Wooden Table">
+                    <h4><a href="table-desc.html">Wooden Table</a></h4>
+                    <p>Price: NPR 12,000</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Redirect to payment page with dynamic query parameters
+        function redirectToPayment(productName, productPrice) {
+            const url = `payment.html?name=${encodeURIComponent(productName)}&price=${encodeURIComponent(productPrice)}`;
+            window.location.href = url;
+        }
+
+        // Function to add item to cart
+        function addToCart(name, price, image) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name, price, image });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Item added to cart successfully!');
+        }
+    </script>
+</body>
+</html>

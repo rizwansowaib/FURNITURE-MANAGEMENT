@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Dining Table - Spacious & Durable</title>
+    <link rel="stylesheet" href="dec-style.css">
+</head>
+<body>
+    <header>
+        <h1>Online Furniture Shop</h1>
+        <nav class="menu">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="chair-desc.html">Chair</a></li>
+                <li><a href="table-desc.html">Table</a></li>
+                <li><a href="sofa-desc.html">Sofa</a></li>
+                <li><a href="bed-desc.html">Bed</a></li>
+                <li><a href="wardrobe-desc.html">Wardrobe</a></li>
+                <li><a href="bookshelf-desc.html">Bookshelf</a></li>
+                <li><a href="tv-unit-desc.html">TV Unit</a></li>
+                <li><a href="cupboard-desc.html">Cupboard</a></li>
+                <li><a href="dressing-table-desc.html">Dressing Table</a></li>
+                <li><a href="shoe-rack-desc.html">Shoe Rack</a></li>
+                <li><a href="side-table-desc.html">Side Table</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="product-container">
+            <!-- Product Image -->
+            <div class="product-image">
+                <img src="../images/dining-table.jpg" alt="Elegant Dining Table" class="responsive-image">
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+                <h2>Elegant Dining Table - Spacious & Durable</h2>
+                <p class="price">NPR 50,000</p>
+                <p>
+                    Elevate your dining experience with our **Elegant Dining Table**, crafted from premium wood with a stylish finish. Perfect for family gatherings and modern interiors.
+                </p>
+                <ul class="specifications">
+                    <li><strong>Dimensions:</strong> 180 x 90 x 75 cm</li>
+                    <li><strong>Material:</strong> Solid Wood with Glossy Finish</li>
+                    <li><strong>Color:</strong> Mahogany Brown</li>
+                    <li><strong>Seating Capacity:</strong> Up to 6 People</li>
+                </ul>
+                <!-- Buy Now & Add to Cart Buttons -->
+                <button class="buy-now" onclick="redirectToPayment('Elegant Dining Table', 50000)">Buy Now</button>
+                <button class="add-to-cart" onclick="addToCart('Elegant Dining Table', 50000, '../images/dining-table.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Recommendations Section -->
+        <div class="recommendations">
+            <h3>You May Also Like</h3>
+            <div class="recommended-products">
+                <div class="product">
+                    <img src="../images/wardrobe.jpg" alt="Modern Wardrobe">
+                    <h4><a href="wardrobe-desc.html">Modern Wardrobe</a></h4>
+                    <p>Price: NPR 40,000</p>
+                </div>
+                <div class="product">
+                    <img src="../images/bookshelf.jpg" alt="Premium Bookshelf">
+                    <h4><a href="bookshelf-desc.html">Premium Bookshelf</a></h4>
+                    <p>Price: NPR 20,000</p>
+                </div>
+                <div class="product">
+                    <img src="../images/cupboard.jpg" alt="Classic Cupboard">
+                    <h4><a href="cupboard-desc.html">Classic Cupboard</a></h4>
+                    <p>Price: NPR 35,000</p>
+                </div>
+                <div class="product">
+                    <img src="../images/side-table.jpg" alt="Modern Side Table">
+                    <h4><a href="side-table-desc.html">Modern Side Table</a></h4>
+                    <p>Price: NPR 10,000</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Redirect to payment page with dynamic query parameters
+        function redirectToPayment(productName, productPrice) {
+            const url = `payment.html?name=${encodeURIComponent(productName)}&price=${encodeURIComponent(productPrice)}`;
+            window.location.href = url;
+        }
+
+        // Function to add item to cart
+        function addToCart(name, price, image) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name, price, image });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Item added to cart successfully!');
+        }
+    </script>
+</body>
+</html>

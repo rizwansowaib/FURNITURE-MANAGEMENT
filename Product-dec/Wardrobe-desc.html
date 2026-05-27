@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Wardrobe - Stylish & Spacious</title>
+    <link rel="stylesheet" href="dec-style.css">
+</head>
+<body>
+    <header>
+        <h1>Online Furniture Shop</h1>
+        <nav class="menu">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="chair-desc.html">Chair</a></li>
+                <li><a href="table-desc.html">Table</a></li>
+                <li><a href="bed-desc.html">Bed</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="product-container">
+            <!-- Product Image -->
+            <div class="product-image">
+                <img src="../images/wardrobe.jpg" alt="Modern Wardrobe" class="responsive-image">
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+                <h2>Modern Wardrobe - Stylish & Spacious</h2>
+                <p class="price">NPR 40,000</p>
+                <p>
+                    Organize your space with our **Modern Wardrobe**, designed with sleek aesthetics and ample storage. Made from high-quality engineered wood for durability.
+                </p>
+                <ul class="specifications">
+                    <li><strong>Dimensions:</strong> 180 x 120 x 50 cm</li>
+                    <li><strong>Material:</strong> Engineered Wood & Glass</li>
+                    <li><strong>Color:</strong> Classic Oak</li>
+                    <li><strong>Features:</strong> Sliding doors, multiple shelves, hanger rod</li>
+                </ul>
+                <!-- Buy Now & Add to Cart Buttons -->
+                <button class="buy-now" onclick="redirectToPayment('Modern Wardrobe', 40000)">Buy Now</button>
+                <button class="add-to-cart" onclick="addToCart('Modern Wardrobe', 40000, '../images/wardrobe.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Recommendations Section -->
+        <div class="recommendations">
+            <h3>You May Also Like</h3>
+            <div class="recommended-products">
+                <div class="product">
+                    <img src="../images/bed.jpg" alt="Luxury Bed">
+                    <h4><a href="bed-desc.html">Luxury Bed</a></h4>
+                    <p>Price: NPR 50,000</p>
+                </div>
+                <div class="product">
+                    <img src="../images/sofa.png" alt="Cozy Sofa">
+                    <h4><a href="sofa-desc.html">Cozy Sofa</a></h4>
+                    <p>Price: NPR 25,000</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Redirect to payment page with dynamic query parameters
+        function redirectToPayment(productName, productPrice) {
+            const url = `payment.html?name=${encodeURIComponent(productName)}&price=${encodeURIComponent(productPrice)}`;
+            window.location.href = url;
+        }
+
+        // Function to add item to cart
+        function addToCart(name, price, image) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name, price, image });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Item added to cart successfully!');
+        }
+    </script>
+</body>
+</html>

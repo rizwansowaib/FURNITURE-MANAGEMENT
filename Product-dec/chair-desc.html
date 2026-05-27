@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Chair - Timeless Comfort</title>
+    <link rel="stylesheet" href="dec-style.css">
+</head>
+<body>
+    <header>
+        <h1>Online Furniture Shop</h1>
+        <nav class="menu">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="sofa-desc.html">Sofa</a></li>
+                <li><a href="table-desc.html">Table</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="product-container">
+            <!-- Product Image -->
+            <div class="product-image">
+                <img src="../images/chair.jpg" alt="Elegant Chair" class="responsive-image">
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+                <h2>Elegant Chair - Timeless Comfort</h2>
+                <p class="price">NPR 8,000</p>
+                <p>
+                    Enhance your home with our **Elegant Chair**, designed for unmatched comfort and style. Crafted with premium wood and soft cushioning, it’s perfect for any space.
+                </p>
+                <ul class="specifications">
+                    <li><strong>Dimensions:</strong> 60 x 60 x 90 cm</li>
+                    <li><strong>Material:</strong> High-Quality Wood & Fabric</li>
+                    <li><strong>Color:</strong> Classic Beige</li>
+                    <li><strong>Weight:</strong> Lightweight, easy to move</li>
+                </ul>
+                <!-- Buy Now & Add to Cart Buttons -->
+                <button class="buy-now" onclick="redirectToPayment('Elegant Chair', 8000)">Buy Now</button>
+                <button class="add-to-cart" onclick="addToCart('Elegant Chair', 8000, '../images/chair.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Recommendations Section -->
+        <div class="recommendations">
+            <h3>You May Also Like</h3>
+            <div class="recommended-products">
+                <div class="product">
+                    <img src="../images/table.png" alt="Wooden Table">
+                    <h4><a href="table-desc.html">Wooden Table</a></h4>
+                    <p>Price: NPR 12,000</p>
+                </div>
+                <div class="product">
+                    <img src="../images/furniture1.png" alt="Cozy Sofa">
+                    <h4><a href="sofa-desc.html">Cozy Sofa</a></h4>
+                    <p>Price: NPR 25,000</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Redirect to payment page with dynamic query parameters
+        function redirectToPayment(productName, productPrice) {
+            const url = `payment.html?name=${encodeURIComponent(productName)}&price=${encodeURIComponent(productPrice)}`;
+            window.location.href = url;
+        }
+
+        // Function to add item to cart
+        function addToCart(name, price, image) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name, price, image });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Item added to cart successfully!');
+        }
+    </script>
+</body>
+</html>

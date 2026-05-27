@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Wooden Table</title>
+    <link rel="stylesheet" href="dec-style.css">
+</head>
+<body>
+    <header>
+        <h1>Online Furniture Shop</h1>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="../cart.html">Cart</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="product-container">
+            <!-- Product Image -->
+            <div class="product-image">
+                <img src="../images/table.png" alt="Wooden Table" class="responsive-image">
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+                <h2>Elegant Wooden Table</h2>
+                <p class="price">NPR 12,000</p>
+                <p>
+                    Add timeless charm to your home with our **Elegant Wooden Table**. Perfect for dining, work, or decoration, this handcrafted table is made from premium oak wood and finished with a smooth glossy surface.
+                </p>
+                <ul class="specifications">
+                    <li><strong>Dimensions:</strong> 120 x 80 x 75 cm</li>
+                    <li><strong>Material:</strong> Premium Oak Wood</li>
+                    <li><strong>Finish:</strong> Smooth Glossy</li>
+                    <li><strong>Weight:</strong> 20 kg</li>
+                </ul>
+                <!-- Updated Buy Now Button -->
+                <button class="buy-now" onclick="redirectToPayment('Elegant Wooden Table', 12000)">Buy Now</button>
+            </div>
+        </div>
+
+        <!-- Recommendations Section -->
+        <div class="recommendations">
+            <h3>You May Also Like</h3>
+            <div class="recommended-products">
+                <div class="product">
+                    <img src="../images/furniture1.png" alt="Cozy Sofa">
+                    <h4><a href="sofa-desc.html">Cozy Sofa</a></h4>
+                    <p>Price: NPR 25,000</p>
+                </div>
+                <div class="product">
+                    <img src="../images/chair.jpg" alt="Elegant Chair">
+                    <h4><a href="chair-desc.html">Elegant Chair</a></h4>
+                    <p>Price: NPR 8,000</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Redirect to payment.html with dynamic query parameters
+        function redirectToPayment(productName, productPrice) {
+            const url = `payment.html?name=${encodeURIComponent(productName)}&price=${encodeURIComponent(productPrice)}`;
+            window.location.href = url;
+        }
+        function addToCart(name, price, image) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({ name, price, image });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert('Item added to cart successfully!');
+}
+    </script>
+</body>
+</html>

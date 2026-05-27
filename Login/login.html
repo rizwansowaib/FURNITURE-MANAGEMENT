@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Furniture Shop</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        header nav a {
+            color: #fff;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Login Section */
+        .login {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .login h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .login form {
+            display: flex;
+            flex-direction: column;
+        }
+        .login label {
+            text-align: left;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .login input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .login button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .login button:hover {
+            background-color: #218838;
+        }
+
+        /* Additional Links */
+        .additional-links {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .additional-links a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .additional-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #333;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">Furniture Shop</div>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="Login/register.html">Register</a>
+        </nav>
+    </header>
+
+    <!-- Login Section -->
+    <section class="login">
+        <h2>Customer Login</h2>
+        <form action="login.php" method="POST">
+            <!-- Email -->
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <!-- Password -->
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <!-- Submit Button -->
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- Additional Links -->
+        <div class="additional-links">
+            <p>Don't have an account? <a href="register.html">Register Now</a></p>
+            <p>New here? <a href="signup.html">Sign Up</a></p>
+            <p>Are you an admin? <a href="../admin/admin-login.html">Admin Login</a></p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Furniture Shop. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
